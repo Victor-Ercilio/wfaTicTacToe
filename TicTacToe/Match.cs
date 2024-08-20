@@ -91,9 +91,9 @@ namespace TicTacToe
         private bool WinByDiagonal()
         {
             
-            if (Table[0, 0] == Table[1, 1] && Table[1, 1] == Table[2, 2])
+            if (Table[0, 0] != NoMove && Table[0, 0] == Table[1, 1] && Table[1, 1] == Table[2, 2])
                 return true;
-            else if (Table[0, 2] == Table[1, 1] && Table[1, 1] == Table[2, 0])
+            else if (Table[0, 2] != NoMove && Table[0, 2] == Table[1, 1] && Table[1, 1] == Table[2, 0])
                 return true;
             return false;
         }
@@ -103,7 +103,7 @@ namespace TicTacToe
             int cols = Table.GetLength(0);
             for (int i = 0; i < cols; i++)
             {
-                if (Table[i, 0] == Table[i, 1] && Table[i, 1] == Table[i, 2])
+                if (Table[i, 0] != NoMove && Table[i, 0] == Table[i, 1] && Table[i, 1] == Table[i, 2])
                     return true;
             }
             return false;
@@ -114,7 +114,7 @@ namespace TicTacToe
             int rows = Table.GetLength(1);
             for (int i = 0; i < rows; i++)
             {
-                if (Table[0, i] == Table[1, i] && Table[1, i] == Table[2, i])
+                if (Table[0, i] != NoMove && Table[0, i] == Table[1, i] && Table[1, i] == Table[2, i])
                     return true;
             }
             return false;
