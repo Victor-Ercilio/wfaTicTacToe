@@ -25,7 +25,6 @@ namespace TicTacToe
             Players.Add(player2);
 
             Table = new int[3, 3];
-            HasEnded = false;
             MovesLeft = TotalMoves;
         }
 
@@ -33,8 +32,8 @@ namespace TicTacToe
         public Player PlayerTurn {  get; private set; }
         public int[,] Table { get; private set; }
         public int MovesLeft { get; private set; }
-        public bool HasEnded { get; private set; }
-        public bool HasWinner { get; private set; }
+        public bool HasEnded { get; private set; } = false;
+        public bool HasWinner { get; private set; } = false;
         
         public void Start()
         {
