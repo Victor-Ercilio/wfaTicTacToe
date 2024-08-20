@@ -230,10 +230,12 @@
             // txtScorePlayer1
             // 
             this.txtScorePlayer1.Enabled = false;
+            this.txtScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScorePlayer1.Location = new System.Drawing.Point(126, 12);
             this.txtScorePlayer1.Name = "txtScorePlayer1";
-            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 20);
+            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 26);
             this.txtScorePlayer1.TabIndex = 1;
+            this.txtScorePlayer1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnStart
             // 
@@ -272,10 +274,12 @@
             // txtScorePlayer2
             // 
             this.txtScorePlayer2.Enabled = false;
+            this.txtScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScorePlayer2.Location = new System.Drawing.Point(212, 12);
             this.txtScorePlayer2.Name = "txtScorePlayer2";
-            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 20);
+            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 26);
             this.txtScorePlayer2.TabIndex = 1;
+            this.txtScorePlayer2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblVs
             // 
