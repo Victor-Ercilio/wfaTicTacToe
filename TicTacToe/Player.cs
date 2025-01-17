@@ -7,27 +7,27 @@ using System.Windows.Forms;
 
 namespace TicTacToe
 {
-    internal class Player : IScore
+    internal class Player : IPlayGame
     {
-        public delegate void Action(int x, int y);
-        public delegate void ActionEnd();
-        public Player(string name, string mark)
+        public Player(string name, char mark)
         {
             Name = name;
+            Mark = Char.ToUpper(mark);
             Score = 0;
-            Mark = mark;
         }
 
         public string Name { get; set; }
         public int Score { get; set; }
-        public string Mark {  get; set; }
-        public Action Move { get; set; }
-        public ActionEnd EndMove { get; set; }
+        public char Mark {  get; set; }
+        public Game.Move MoveTo { get; set; }
 
-        public void ExecuteMoveTo(int x, int y)
-        {
-            Move(x, y);
-            EndMove();
-        }
+        //public action move { get; set; }
+        //public actionend endmove { get; set; }
+
+        //public void executemoveto(int x, int y)
+        //{
+        //    move(x, y);
+        //    endmove();
+        //}
     }
 }
