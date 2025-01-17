@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlScores = new System.Windows.Forms.Panel();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.txtScorePlayer2 = new System.Windows.Forms.TextBox();
+            this.txtScorePlayer1 = new System.Windows.Forms.TextBox();
+            this.lblVs = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.lblPlayer2 = new System.Windows.Forms.Label();
+            this.lblPlayer1 = new System.Windows.Forms.Label();
             this.tblGame = new System.Windows.Forms.TableLayoutPanel();
             this.lblAreaNW = new System.Windows.Forms.Label();
             this.lblAreaN = new System.Windows.Forms.Label();
@@ -39,31 +46,108 @@
             this.lblAreaSW = new System.Windows.Forms.Label();
             this.lblAreaS = new System.Windows.Forms.Label();
             this.lblAreaSE = new System.Windows.Forms.Label();
-            this.lblPlayer1 = new System.Windows.Forms.Label();
-            this.txtScorePlayer1 = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.lblPlayer2 = new System.Windows.Forms.Label();
-            this.txtScorePlayer2 = new System.Windows.Forms.TextBox();
-            this.lblVs = new System.Windows.Forms.Label();
+            this.tblScores = new System.Windows.Forms.TableLayoutPanel();
+            this.fwlPlayer1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.fwlPlayer2 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlScores.SuspendLayout();
             this.tblGame.SuspendLayout();
+            this.tblScores.SuspendLayout();
+            this.fwlPlayer1.SuspendLayout();
+            this.fwlPlayer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlScores
             // 
-            this.pnlScores.Controls.Add(this.btnStart);
-            this.pnlScores.Controls.Add(this.txtScorePlayer2);
-            this.pnlScores.Controls.Add(this.txtScorePlayer1);
-            this.pnlScores.Controls.Add(this.lblVs);
+            this.pnlScores.Controls.Add(this.tblScores);
             this.pnlScores.Controls.Add(this.lblResult);
-            this.pnlScores.Controls.Add(this.lblPlayer2);
-            this.pnlScores.Controls.Add(this.lblPlayer1);
             this.pnlScores.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlScores.Location = new System.Drawing.Point(10, 10);
             this.pnlScores.Name = "pnlScores";
-            this.pnlScores.Size = new System.Drawing.Size(361, 100);
+            this.pnlScores.Size = new System.Drawing.Size(345, 129);
             this.pnlScores.TabIndex = 0;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(141, 72);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(63, 26);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // txtScorePlayer2
+            // 
+            this.txtScorePlayer2.Enabled = false;
+            this.txtScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScorePlayer2.Location = new System.Drawing.Point(74, 3);
+            this.txtScorePlayer2.Name = "txtScorePlayer2";
+            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 26);
+            this.txtScorePlayer2.TabIndex = 1;
+            this.txtScorePlayer2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtScorePlayer1
+            // 
+            this.txtScorePlayer1.Enabled = false;
+            this.txtScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScorePlayer1.Location = new System.Drawing.Point(15, 3);
+            this.txtScorePlayer1.Name = "txtScorePlayer1";
+            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 26);
+            this.txtScorePlayer1.TabIndex = 1;
+            this.txtScorePlayer1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblVs
+            // 
+            this.lblVs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVs.AutoSize = true;
+            this.lblVs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVs.Location = new System.Drawing.Point(141, 0);
+            this.lblVs.Name = "lblVs";
+            this.lblVs.Size = new System.Drawing.Size(63, 69);
+            this.lblVs.TabIndex = 0;
+            this.lblVs.Text = "VS";
+            this.lblVs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(0, 102);
+            this.lblResult.Margin = new System.Windows.Forms.Padding(5);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblResult.Size = new System.Drawing.Size(345, 27);
+            this.lblResult.TabIndex = 0;
+            this.lblResult.Text = "Result";
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPlayer2
+            // 
+            this.lblPlayer2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblPlayer2.AutoSize = true;
+            this.lblPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer2.Location = new System.Drawing.Point(3, 6);
+            this.lblPlayer2.Name = "lblPlayer2";
+            this.lblPlayer2.Size = new System.Drawing.Size(65, 20);
+            this.lblPlayer2.TabIndex = 0;
+            this.lblPlayer2.Text = "Player2:";
+            // 
+            // lblPlayer1
+            // 
+            this.lblPlayer1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblPlayer1.AutoSize = true;
+            this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer1.Location = new System.Drawing.Point(64, 6);
+            this.lblPlayer1.Name = "lblPlayer1";
+            this.lblPlayer1.Size = new System.Drawing.Size(65, 20);
+            this.lblPlayer1.TabIndex = 0;
+            this.lblPlayer1.Text = "Player1:";
             // 
             // tblGame
             // 
@@ -82,13 +166,13 @@
             this.tblGame.Controls.Add(this.lblAreaS, 1, 2);
             this.tblGame.Controls.Add(this.lblAreaSE, 2, 2);
             this.tblGame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblGame.Location = new System.Drawing.Point(10, 110);
+            this.tblGame.Location = new System.Drawing.Point(10, 139);
             this.tblGame.Name = "tblGame";
             this.tblGame.RowCount = 3;
             this.tblGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tblGame.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tblGame.Size = new System.Drawing.Size(361, 259);
+            this.tblGame.Size = new System.Drawing.Size(345, 286);
             this.tblGame.TabIndex = 2;
             // 
             // lblAreaNW
@@ -100,7 +184,7 @@
             this.lblAreaNW.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAreaNW.Location = new System.Drawing.Point(4, 1);
             this.lblAreaNW.Name = "lblAreaNW";
-            this.lblAreaNW.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaNW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaNW.TabIndex = 0;
             this.lblAreaNW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaNW.Click += new System.EventHandler(this.Label_Click);
@@ -112,9 +196,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaN.AutoSize = true;
             this.lblAreaN.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaN.Location = new System.Drawing.Point(124, 1);
+            this.lblAreaN.Location = new System.Drawing.Point(118, 1);
             this.lblAreaN.Name = "lblAreaN";
-            this.lblAreaN.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaN.Size = new System.Drawing.Size(107, 94);
             this.lblAreaN.TabIndex = 0;
             this.lblAreaN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaN.Click += new System.EventHandler(this.Label_Click);
@@ -126,9 +210,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaNE.AutoSize = true;
             this.lblAreaNE.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaNE.Location = new System.Drawing.Point(244, 1);
+            this.lblAreaNE.Location = new System.Drawing.Point(232, 1);
             this.lblAreaNE.Name = "lblAreaNE";
-            this.lblAreaNE.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaNE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaNE.TabIndex = 0;
             this.lblAreaNE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaNE.Click += new System.EventHandler(this.Label_Click);
@@ -140,9 +224,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaW.AutoSize = true;
             this.lblAreaW.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaW.Location = new System.Drawing.Point(4, 87);
+            this.lblAreaW.Location = new System.Drawing.Point(4, 96);
             this.lblAreaW.Name = "lblAreaW";
-            this.lblAreaW.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaW.TabIndex = 0;
             this.lblAreaW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaW.Click += new System.EventHandler(this.Label_Click);
@@ -154,9 +238,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaO.AutoSize = true;
             this.lblAreaO.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaO.Location = new System.Drawing.Point(124, 87);
+            this.lblAreaO.Location = new System.Drawing.Point(118, 96);
             this.lblAreaO.Name = "lblAreaO";
-            this.lblAreaO.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaO.Size = new System.Drawing.Size(107, 94);
             this.lblAreaO.TabIndex = 0;
             this.lblAreaO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaO.Click += new System.EventHandler(this.Label_Click);
@@ -168,9 +252,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaE.AutoSize = true;
             this.lblAreaE.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaE.Location = new System.Drawing.Point(244, 87);
+            this.lblAreaE.Location = new System.Drawing.Point(232, 96);
             this.lblAreaE.Name = "lblAreaE";
-            this.lblAreaE.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaE.TabIndex = 0;
             this.lblAreaE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaE.Click += new System.EventHandler(this.Label_Click);
@@ -182,9 +266,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaSW.AutoSize = true;
             this.lblAreaSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaSW.Location = new System.Drawing.Point(4, 173);
+            this.lblAreaSW.Location = new System.Drawing.Point(4, 191);
             this.lblAreaSW.Name = "lblAreaSW";
-            this.lblAreaSW.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaSW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaSW.TabIndex = 0;
             this.lblAreaSW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaSW.Click += new System.EventHandler(this.Label_Click);
@@ -196,9 +280,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaS.AutoSize = true;
             this.lblAreaS.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaS.Location = new System.Drawing.Point(124, 173);
+            this.lblAreaS.Location = new System.Drawing.Point(118, 191);
             this.lblAreaS.Name = "lblAreaS";
-            this.lblAreaS.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaS.Size = new System.Drawing.Size(107, 94);
             this.lblAreaS.TabIndex = 0;
             this.lblAreaS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaS.Click += new System.EventHandler(this.Label_Click);
@@ -210,102 +294,73 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaSE.AutoSize = true;
             this.lblAreaSE.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAreaSE.Location = new System.Drawing.Point(244, 173);
+            this.lblAreaSE.Location = new System.Drawing.Point(232, 191);
             this.lblAreaSE.Name = "lblAreaSE";
-            this.lblAreaSE.Size = new System.Drawing.Size(113, 85);
+            this.lblAreaSE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaSE.TabIndex = 0;
             this.lblAreaSE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaSE.Click += new System.EventHandler(this.Label_Click);
             // 
-            // lblPlayer1
+            // tblScores
             // 
-            this.lblPlayer1.AutoSize = true;
-            this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1.Location = new System.Drawing.Point(9, 12);
-            this.lblPlayer1.Name = "lblPlayer1";
-            this.lblPlayer1.Size = new System.Drawing.Size(65, 20);
-            this.lblPlayer1.TabIndex = 0;
-            this.lblPlayer1.Text = "Player1:";
+            this.tblScores.ColumnCount = 3;
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblScores.Controls.Add(this.lblVs, 1, 0);
+            this.tblScores.Controls.Add(this.btnStart, 1, 1);
+            this.tblScores.Controls.Add(this.fwlPlayer1, 0, 0);
+            this.tblScores.Controls.Add(this.fwlPlayer2, 2, 0);
+            this.tblScores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tblScores.Location = new System.Drawing.Point(0, 0);
+            this.tblScores.Name = "tblScores";
+            this.tblScores.RowCount = 2;
+            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.59504F));
+            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.40496F));
+            this.tblScores.Size = new System.Drawing.Size(345, 101);
+            this.tblScores.TabIndex = 3;
             // 
-            // txtScorePlayer1
+            // fwlPlayer1
             // 
-            this.txtScorePlayer1.Enabled = false;
-            this.txtScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScorePlayer1.Location = new System.Drawing.Point(126, 12);
-            this.txtScorePlayer1.Name = "txtScorePlayer1";
-            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 26);
-            this.txtScorePlayer1.TabIndex = 1;
-            this.txtScorePlayer1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.fwlPlayer1.Controls.Add(this.lblPlayer1);
+            this.fwlPlayer1.Controls.Add(this.txtScorePlayer1);
+            this.fwlPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fwlPlayer1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.fwlPlayer1.Location = new System.Drawing.Point(3, 3);
+            this.fwlPlayer1.Name = "fwlPlayer1";
+            this.fwlPlayer1.Size = new System.Drawing.Size(132, 63);
+            this.fwlPlayer1.TabIndex = 1;
             // 
-            // btnStart
+            // fwlPlayer2
             // 
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(153, 41);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(74, 28);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // lblResult
-            // 
-            this.lblResult.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(0, 73);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(5);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.lblResult.Size = new System.Drawing.Size(361, 27);
-            this.lblResult.TabIndex = 0;
-            this.lblResult.Text = "Result";
-            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblPlayer2
-            // 
-            this.lblPlayer2.AutoSize = true;
-            this.lblPlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer2.Location = new System.Drawing.Point(261, 12);
-            this.lblPlayer2.Name = "lblPlayer2";
-            this.lblPlayer2.Size = new System.Drawing.Size(65, 20);
-            this.lblPlayer2.TabIndex = 0;
-            this.lblPlayer2.Text = "Player2:";
-            // 
-            // txtScorePlayer2
-            // 
-            this.txtScorePlayer2.Enabled = false;
-            this.txtScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScorePlayer2.Location = new System.Drawing.Point(212, 12);
-            this.txtScorePlayer2.Name = "txtScorePlayer2";
-            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 26);
-            this.txtScorePlayer2.TabIndex = 1;
-            this.txtScorePlayer2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblVs
-            // 
-            this.lblVs.AutoSize = true;
-            this.lblVs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVs.Location = new System.Drawing.Point(175, 12);
-            this.lblVs.Name = "lblVs";
-            this.lblVs.Size = new System.Drawing.Size(31, 20);
-            this.lblVs.TabIndex = 0;
-            this.lblVs.Text = "VS";
+            this.fwlPlayer2.Controls.Add(this.lblPlayer2);
+            this.fwlPlayer2.Controls.Add(this.txtScorePlayer2);
+            this.fwlPlayer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fwlPlayer2.Location = new System.Drawing.Point(210, 3);
+            this.fwlPlayer2.Name = "fwlPlayer2";
+            this.fwlPlayer2.Size = new System.Drawing.Size(132, 63);
+            this.fwlPlayer2.TabIndex = 2;
             // 
             // FrmTicTacToe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(381, 379);
+            this.ClientSize = new System.Drawing.Size(365, 435);
             this.Controls.Add(this.tblGame);
             this.Controls.Add(this.pnlScores);
             this.Name = "FrmTicTacToe";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "TIC TAC TOE";
             this.pnlScores.ResumeLayout(false);
-            this.pnlScores.PerformLayout();
             this.tblGame.ResumeLayout(false);
             this.tblGame.PerformLayout();
+            this.tblScores.ResumeLayout(false);
+            this.tblScores.PerformLayout();
+            this.fwlPlayer1.ResumeLayout(false);
+            this.fwlPlayer1.PerformLayout();
+            this.fwlPlayer2.ResumeLayout(false);
+            this.fwlPlayer2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -330,6 +385,9 @@
         private System.Windows.Forms.Label lblVs;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Label lblPlayer2;
+        private System.Windows.Forms.TableLayoutPanel tblScores;
+        private System.Windows.Forms.FlowLayoutPanel fwlPlayer1;
+        private System.Windows.Forms.FlowLayoutPanel fwlPlayer2;
     }
 }
 

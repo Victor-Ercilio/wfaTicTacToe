@@ -52,8 +52,8 @@
     <Compile Include="FrmTicTacToe.Designer.cs">
       <DependentUpon>FrmTicTacToe.cs</DependentUpon>
     </Compile>
-    <Compile Include="IScore.cs" />
-    <Compile Include="Match.cs" />
+    <Compile Include="IPlayGame.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
