@@ -76,7 +76,6 @@ namespace TicTacToe
                 if(value != null && Players.Contains(value))
                 {
                     _playerWinner = value;
-                    State = EState.HasWinner;
                 }
                 else if(value == null)
                 {
