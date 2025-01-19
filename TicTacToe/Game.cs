@@ -29,7 +29,7 @@ namespace TicTacToe
             Start,
             WaitingPlayer,
             PlayerMoved,
-            HasWinner,
+            MatchHasWinner,
             End
         }
 
