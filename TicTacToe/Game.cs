@@ -78,7 +78,11 @@ namespace TicTacToe
                     _playerWinner = value;
                     State = EState.HasWinner;
                 }
+                else if(value == null)
+                {
+                    _playerWinner = null;
             }
+        }
         }
         public char[,] Board { get; private set; } = null;
         public int MovesLeft { get; private set; } = 0;
