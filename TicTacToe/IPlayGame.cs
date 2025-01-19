@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    internal interface IPlayGame
+    public interface IPlayGame
     {
-        Game.Move MoveTo { get; set; }
         int Score { get; set; }
         string Name { get; set; }
         char Mark {  get; set; }
-
+        event EventHandler<MarkBoardEventArgs> MarkBoard;
+        void MakeMark(BoardArea vertical, BoardArea horizontal);
     }
 }

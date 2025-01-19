@@ -19,15 +19,38 @@ namespace TicTacToe
         public string Name { get; set; }
         public int Score { get; set; }
         public char Mark {  get; set; }
-        public Game.Move MoveTo { get; set; }
 
-        //public action move { get; set; }
-        //public actionend endmove { get; set; }
+        public event EventHandler<MarkBoardEventArgs> MarkBoard;
+        
+        void IPlayGame.MakeMark(BoardArea vertical, BoardArea horizontal)
+        {
+            try
+            {
+                MarkBoardEventArgs e = new MarkBoardEventArgs
+                {
+                    Vertical = vertical,
+                    Horizontal = horizontal
+                };
+                OnMarkedBoard(this, e);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
 
-        //public void executemoveto(int x, int y)
-        //{
-        //    move(x, y);
-        //    endmove();
-        //}
+        }
+
+        protected void OnMarkedBoard(object sender, MarkBoardEventArgs e)
+        {
+            try
+            {
+                MarkBoard?.Invoke(this, e);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
+
 }

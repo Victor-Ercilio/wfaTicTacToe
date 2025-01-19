@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             this.pnlScores = new System.Windows.Forms.Panel();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.txtScorePlayer2 = new System.Windows.Forms.TextBox();
-            this.txtScorePlayer1 = new System.Windows.Forms.TextBox();
+            this.tblScores = new System.Windows.Forms.TableLayoutPanel();
             this.lblVs = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.lblPlayer2 = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.fwlPlayer1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblPlayer1 = new System.Windows.Forms.Label();
+            this.txtScorePlayer1 = new System.Windows.Forms.TextBox();
+            this.fwlPlayer2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblPlayer2 = new System.Windows.Forms.Label();
+            this.txtScorePlayer2 = new System.Windows.Forms.TextBox();
+            this.lblResult = new System.Windows.Forms.Label();
             this.tblGame = new System.Windows.Forms.TableLayoutPanel();
             this.lblAreaNW = new System.Windows.Forms.Label();
             this.lblAreaN = new System.Windows.Forms.Label();
@@ -46,14 +49,11 @@
             this.lblAreaSW = new System.Windows.Forms.Label();
             this.lblAreaS = new System.Windows.Forms.Label();
             this.lblAreaSE = new System.Windows.Forms.Label();
-            this.tblScores = new System.Windows.Forms.TableLayoutPanel();
-            this.fwlPlayer1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.fwlPlayer2 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlScores.SuspendLayout();
-            this.tblGame.SuspendLayout();
             this.tblScores.SuspendLayout();
             this.fwlPlayer1.SuspendLayout();
             this.fwlPlayer2.SuspendLayout();
+            this.tblGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlScores
@@ -66,39 +66,24 @@
             this.pnlScores.Size = new System.Drawing.Size(345, 129);
             this.pnlScores.TabIndex = 0;
             // 
-            // btnStart
+            // tblScores
             // 
-            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(141, 72);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(63, 26);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // txtScorePlayer2
-            // 
-            this.txtScorePlayer2.Enabled = false;
-            this.txtScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScorePlayer2.Location = new System.Drawing.Point(74, 3);
-            this.txtScorePlayer2.Name = "txtScorePlayer2";
-            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 26);
-            this.txtScorePlayer2.TabIndex = 1;
-            this.txtScorePlayer2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtScorePlayer1
-            // 
-            this.txtScorePlayer1.Enabled = false;
-            this.txtScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScorePlayer1.Location = new System.Drawing.Point(15, 3);
-            this.txtScorePlayer1.Name = "txtScorePlayer1";
-            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 26);
-            this.txtScorePlayer1.TabIndex = 1;
-            this.txtScorePlayer1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tblScores.ColumnCount = 3;
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tblScores.Controls.Add(this.lblVs, 1, 0);
+            this.tblScores.Controls.Add(this.btnStart, 1, 1);
+            this.tblScores.Controls.Add(this.fwlPlayer1, 0, 0);
+            this.tblScores.Controls.Add(this.fwlPlayer2, 2, 0);
+            this.tblScores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tblScores.Location = new System.Drawing.Point(0, 0);
+            this.tblScores.Name = "tblScores";
+            this.tblScores.RowCount = 2;
+            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.59504F));
+            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.40496F));
+            this.tblScores.Size = new System.Drawing.Size(345, 101);
+            this.tblScores.TabIndex = 3;
             // 
             // lblVs
             // 
@@ -114,18 +99,60 @@
             this.lblVs.Text = "VS";
             this.lblVs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblResult
+            // btnStart
             // 
-            this.lblResult.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(0, 102);
-            this.lblResult.Margin = new System.Windows.Forms.Padding(5);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.lblResult.Size = new System.Drawing.Size(345, 27);
-            this.lblResult.TabIndex = 0;
-            this.lblResult.Text = "Result";
-            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(141, 72);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(63, 26);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            // 
+            // fwlPlayer1
+            // 
+            this.fwlPlayer1.Controls.Add(this.lblPlayer1);
+            this.fwlPlayer1.Controls.Add(this.txtScorePlayer1);
+            this.fwlPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fwlPlayer1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.fwlPlayer1.Location = new System.Drawing.Point(3, 3);
+            this.fwlPlayer1.Name = "fwlPlayer1";
+            this.fwlPlayer1.Size = new System.Drawing.Size(132, 63);
+            this.fwlPlayer1.TabIndex = 1;
+            // 
+            // lblPlayer1
+            // 
+            this.lblPlayer1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblPlayer1.AutoSize = true;
+            this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer1.Location = new System.Drawing.Point(64, 6);
+            this.lblPlayer1.Name = "lblPlayer1";
+            this.lblPlayer1.Size = new System.Drawing.Size(65, 20);
+            this.lblPlayer1.TabIndex = 0;
+            this.lblPlayer1.Text = "Player1:";
+            // 
+            // txtScorePlayer1
+            // 
+            this.txtScorePlayer1.Enabled = false;
+            this.txtScorePlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScorePlayer1.Location = new System.Drawing.Point(15, 3);
+            this.txtScorePlayer1.Name = "txtScorePlayer1";
+            this.txtScorePlayer1.Size = new System.Drawing.Size(43, 26);
+            this.txtScorePlayer1.TabIndex = 1;
+            this.txtScorePlayer1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // fwlPlayer2
+            // 
+            this.fwlPlayer2.Controls.Add(this.lblPlayer2);
+            this.fwlPlayer2.Controls.Add(this.txtScorePlayer2);
+            this.fwlPlayer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fwlPlayer2.Location = new System.Drawing.Point(210, 3);
+            this.fwlPlayer2.Name = "fwlPlayer2";
+            this.fwlPlayer2.Size = new System.Drawing.Size(132, 63);
+            this.fwlPlayer2.TabIndex = 2;
             // 
             // lblPlayer2
             // 
@@ -138,16 +165,28 @@
             this.lblPlayer2.TabIndex = 0;
             this.lblPlayer2.Text = "Player2:";
             // 
-            // lblPlayer1
+            // txtScorePlayer2
             // 
-            this.lblPlayer1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblPlayer1.AutoSize = true;
-            this.lblPlayer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayer1.Location = new System.Drawing.Point(64, 6);
-            this.lblPlayer1.Name = "lblPlayer1";
-            this.lblPlayer1.Size = new System.Drawing.Size(65, 20);
-            this.lblPlayer1.TabIndex = 0;
-            this.lblPlayer1.Text = "Player1:";
+            this.txtScorePlayer2.Enabled = false;
+            this.txtScorePlayer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScorePlayer2.Location = new System.Drawing.Point(74, 3);
+            this.txtScorePlayer2.Name = "txtScorePlayer2";
+            this.txtScorePlayer2.Size = new System.Drawing.Size(43, 26);
+            this.txtScorePlayer2.TabIndex = 1;
+            this.txtScorePlayer2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(0, 102);
+            this.lblResult.Margin = new System.Windows.Forms.Padding(5);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblResult.Size = new System.Drawing.Size(345, 27);
+            this.lblResult.TabIndex = 0;
+            this.lblResult.Text = "Result";
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tblGame
             // 
@@ -187,7 +226,7 @@
             this.lblAreaNW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaNW.TabIndex = 0;
             this.lblAreaNW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaNW.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaNW.Click += new System.EventHandler(this.LblAreaNW_Click);
             // 
             // lblAreaN
             // 
@@ -201,7 +240,7 @@
             this.lblAreaN.Size = new System.Drawing.Size(107, 94);
             this.lblAreaN.TabIndex = 0;
             this.lblAreaN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaN.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaN.Click += new System.EventHandler(this.LblAreaN_Click);
             // 
             // lblAreaNE
             // 
@@ -215,7 +254,7 @@
             this.lblAreaNE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaNE.TabIndex = 0;
             this.lblAreaNE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaNE.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaNE.Click += new System.EventHandler(this.LblAreaNE_Click);
             // 
             // lblAreaW
             // 
@@ -229,7 +268,7 @@
             this.lblAreaW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaW.TabIndex = 0;
             this.lblAreaW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaW.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaW.Click += new System.EventHandler(this.LblAreaW_Click);
             // 
             // lblAreaO
             // 
@@ -243,7 +282,7 @@
             this.lblAreaO.Size = new System.Drawing.Size(107, 94);
             this.lblAreaO.TabIndex = 0;
             this.lblAreaO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaO.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaO.Click += new System.EventHandler(this.LblAreaO_Click);
             // 
             // lblAreaE
             // 
@@ -257,7 +296,7 @@
             this.lblAreaE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaE.TabIndex = 0;
             this.lblAreaE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaE.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaE.Click += new System.EventHandler(this.LblAreaE_Click);
             // 
             // lblAreaSW
             // 
@@ -271,7 +310,7 @@
             this.lblAreaSW.Size = new System.Drawing.Size(107, 94);
             this.lblAreaSW.TabIndex = 0;
             this.lblAreaSW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaSW.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaSW.Click += new System.EventHandler(this.LblAreaSW_Click);
             // 
             // lblAreaS
             // 
@@ -285,7 +324,7 @@
             this.lblAreaS.Size = new System.Drawing.Size(107, 94);
             this.lblAreaS.TabIndex = 0;
             this.lblAreaS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaS.Click += new System.EventHandler(this.Label_Click);
+            this.lblAreaS.Click += new System.EventHandler(this.LblAreaS_Click);
             // 
             // lblAreaSE
             // 
@@ -299,47 +338,7 @@
             this.lblAreaSE.Size = new System.Drawing.Size(109, 94);
             this.lblAreaSE.TabIndex = 0;
             this.lblAreaSE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAreaSE.Click += new System.EventHandler(this.Label_Click);
-            // 
-            // tblScores
-            // 
-            this.tblScores.ColumnCount = 3;
-            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblScores.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tblScores.Controls.Add(this.lblVs, 1, 0);
-            this.tblScores.Controls.Add(this.btnStart, 1, 1);
-            this.tblScores.Controls.Add(this.fwlPlayer1, 0, 0);
-            this.tblScores.Controls.Add(this.fwlPlayer2, 2, 0);
-            this.tblScores.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tblScores.Location = new System.Drawing.Point(0, 0);
-            this.tblScores.Name = "tblScores";
-            this.tblScores.RowCount = 2;
-            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.59504F));
-            this.tblScores.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.40496F));
-            this.tblScores.Size = new System.Drawing.Size(345, 101);
-            this.tblScores.TabIndex = 3;
-            // 
-            // fwlPlayer1
-            // 
-            this.fwlPlayer1.Controls.Add(this.lblPlayer1);
-            this.fwlPlayer1.Controls.Add(this.txtScorePlayer1);
-            this.fwlPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fwlPlayer1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.fwlPlayer1.Location = new System.Drawing.Point(3, 3);
-            this.fwlPlayer1.Name = "fwlPlayer1";
-            this.fwlPlayer1.Size = new System.Drawing.Size(132, 63);
-            this.fwlPlayer1.TabIndex = 1;
-            // 
-            // fwlPlayer2
-            // 
-            this.fwlPlayer2.Controls.Add(this.lblPlayer2);
-            this.fwlPlayer2.Controls.Add(this.txtScorePlayer2);
-            this.fwlPlayer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fwlPlayer2.Location = new System.Drawing.Point(210, 3);
-            this.fwlPlayer2.Name = "fwlPlayer2";
-            this.fwlPlayer2.Size = new System.Drawing.Size(132, 63);
-            this.fwlPlayer2.TabIndex = 2;
+            this.lblAreaSE.Click += new System.EventHandler(this.LblAreaSE_Click);
             // 
             // FrmTicTacToe
             // 
@@ -353,14 +352,14 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "TIC TAC TOE";
             this.pnlScores.ResumeLayout(false);
-            this.tblGame.ResumeLayout(false);
-            this.tblGame.PerformLayout();
             this.tblScores.ResumeLayout(false);
             this.tblScores.PerformLayout();
             this.fwlPlayer1.ResumeLayout(false);
             this.fwlPlayer1.PerformLayout();
             this.fwlPlayer2.ResumeLayout(false);
             this.fwlPlayer2.PerformLayout();
+            this.tblGame.ResumeLayout(false);
+            this.tblGame.PerformLayout();
             this.ResumeLayout(false);
 
         }

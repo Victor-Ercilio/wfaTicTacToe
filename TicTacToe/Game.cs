@@ -1,244 +1,305 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    enum BoardPosition
+    public enum BoardArea
     {
-        Center,
-        CenterLeft,
-        CenterRight,
-        UpperCenter,
-        UpperLeft,
-        UpperRight,
-        BottomCenter,
-        BottomLeft,
-        BottomRight
+        Top = 0,
+        Center  = 1,
+        Bottom = 2,
+        Left = Top,
+        Right = Bottom
     }
 
-    internal class Game
+    public class Game
     {
-        public event EventHandler WaitingPlayerMove;
-        public event EventHandler End;
+        #region Game Events
+        public event EventHandler Match_Initialize;
+        public event EventHandler Match_Start;
+        public event EventHandler Match_WaitingPlayer;
+        public event EventHandler Match_HasWinner;
+        public event EventHandler Match_End;
+        public event EventHandler<BoardChangedEventArgs> BoardChanged;
+        #endregion
 
-        public delegate void Move(BoardPosition p);
+        public enum EState
+        {
+            Initialize,
+            Start,
+            WaitingPlayer,
+            PlayerMoved,
+            HasWinner,
+            End
+        }
 
-        public IPlayGame[] _players;
-        private int[,] _board;
+        private IPlayGame[] _players;
+        private EState _state;
+        private IPlayGame _playerTurn;
+        private IPlayGame _playerWinner;
 
-        public const int NoMove = 0;
+        public const char NoMove = '\0';
+        public const int MinimunMoves = 3;
         public const int TotalMoves = 9;
         public Game(IPlayGame player1, IPlayGame player2)
         {
-            Player1 = player1;
-            Player2 = player2;
+            State = EState.Initialize;
+            _players[0] = player1;
+            _players[1] = player2;
         }
 
         public IPlayGame[] Players
         {
             get { return _players; }
-
+        }
+        public IPlayGame PlayerTurn
+        {
+            get
+            {
+                return _playerTurn;
+            }
             private set
             {
-                _players = value;
+                _playerTurn = value;
+                if(value != null)
+                    State = EState.WaitingPlayer;
             }
         }
-
-        public IPlayGame Player1 { get; private set; }
-        public IPlayGame Player2 { get; private set; }
-        public IPlayGame PlayerTurn {  get; private set; }
-        public char[,] Board { get; private set; }
-        public const int TotalPlayers = 2;
-        public int MovesLeft { get; private set; }
-        public bool HasEnded { get; private set; } = false;
-        public bool HasWinner { get; private set; } = false;
-        public string WinnerName { get; private set; }
-        
-        public void Start(object sender, EventArgs e)
+        public IPlayGame Winner
         {
-            InitializeBoard();
-            MovesLeft = TotalMoves;
-            HasEnded = false;
-            HasWinner = false;
-            WinnerName = "";
-
-            AddMoves();
-
-            Random coin = new Random();
-            int firstToPlay = coin.Next(0, TotalPlayers);
-            //PlayerTurn = Players[firstToPlay];
-            PlayerTurn = (firstToPlay == 0) ? Player1 : Player2;
-            WaitingPlayerMove?.Invoke(this, e);
-        }
-
-        private void AddMoves()
-        {
-            //foreach (var player in _players)
-            //{
-            //    player.MoveTo = OnMove;
-            //}
-            Player1.MoveTo += OnMove;
-            Player2.MoveTo += OnMove;
-        }
-
-        private void RemoveMoves()
-        {
-            Player1.MoveTo -= OnMove;
-            Player2.MoveTo -= OnMove;
-        }
-
-        public void OnMove(BoardPosition position)
-        {
-            switch (position)
+            get
             {
-                case BoardPosition.Center:
-                    RegisterMove(1, 1);
-                    Board[1, 1] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.CenterLeft:
-                    RegisterMove(1, 0);
-                    Board[1, 0] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.CenterRight:
-                    RegisterMove(1, 2);
-                    Board[1, 2] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.UpperCenter:
-                    RegisterMove(0, 1);
-                    Board[0, 1] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.UpperLeft:
-                    RegisterMove(0, 0);
-                    Board[0, 0] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.UpperRight:
-                    RegisterMove(0, 2);
-                    Board[0, 2] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.BottomCenter:
-                    RegisterMove(2, 1);
-                    Board[2, 1] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.BottomLeft:
-                    RegisterMove(2, 0);
-                    Board[2, 0] = PlayerTurn.Mark;
-                    break;
-                case BoardPosition.BottomRight:
-                    RegisterMove(2, 2);
-                    Board[2, 2] = PlayerTurn.Mark;
-                    break;
+                return _playerWinner;
             }
-            MovesLeft--;
-            NextTurn();
+            private set
+            {
+                if(value != null && Players.Contains(value))
+                {
+                    _playerWinner = value;
+                    State = EState.HasWinner;
+                }
+            }
+        }
+        public char[,] Board { get; private set; } = null;
+        public int MovesLeft { get; private set; } = 0;
+        public bool HasWinner()
+        {
+            return WinByColumn() || WinByDiagonal() || WinByRow();
         }
 
-        private void InitializeBoard()
+        public EState State
         {
-            if (_board == null)
-                _board = new int[3, 3];
-            else
-                ResetBoard();
+            get { return _state; }
+            private set
+            {
+                _state = value;
+                switch (value)
+                {
+                    case EState.Initialize:
+                        OnInitialize();  break;
+                    case EState.Start:
+                        OnMatchStart(); break;
+                    case EState.WaitingPlayer:
+                        OnWaitingPlayer(); break;
+                    case EState.HasWinner:
+                        OnMatchHasWinner(); break;
+                    case EState.End:
+                        OnMatchEnd(); break;
+                }
+            }
+        }
 
-            if(Board == null)
-                Board = new char[3, 3];
-            else
+        protected void OnInitialize()
+        {
+            try
+            {
+                Board = Board ?? new char[3, 3];
+                _players = _players ?? new IPlayGame[2];
                 ResetBoard();
+                ResetGame();
+
+                Match_Initialize?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void OnMatchStart()
+        {
+            try
+            {
+                ResetBoard();
+                ResetGame();
+                SubscribeToPlayersMovements();
+                Match_Start?.Invoke(this, EventArgs.Empty);
+
+                SortFirstPlayer();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void OnWaitingPlayer()
+        {
+            try
+            {
+                Match_WaitingPlayer?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void OnPlayerMoved(object sender, MarkBoardEventArgs e)
+        {
+            try
+            {
+                State = EState.PlayerMoved;
+
+                int i = (int)e.Vertical;
+                int j = (int)e.Horizontal;
+
+                if (Board[i, j] == NoMove)
+                {
+                    Board[i, j] = PlayerTurn.Mark;
+                    BoardChanged?.Invoke(sender, e);
+                    MovesLeft--;
+                }
+
+                if (HasWinner())
+                {
+                    State = EState.HasWinner;
+                }
+                else if (GameTied())
+                {
+                    State = EState.End;
+                }
+                else
+                {
+                    PlayerTurn = (Players[0] == PlayerTurn ? Players[1] : Players[0]);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void OnMatchHasWinner()
+        {
+            try
+            {
+                Winner = PlayerTurn;
+                Winner.Score++;
+                Match_HasWinner?.Invoke(this, EventArgs.Empty);
+                State = EState.End;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected void OnMatchEnd()
+        {
+            try
+            {
+                UnsubscribeToPlayerMoviment();
+                Match_End?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void PlayerMove(object sender, MarkBoardEventArgs e)
+        {
+            try
+            {
+                bool validGameState = State != EState.Initialize || State != EState.End;
+                bool validHorizontalArea = e.Horizontal == BoardArea.Left || e.Horizontal == BoardArea.Center || e.Horizontal == BoardArea.Right;
+                bool validVerticalArea = e.Vertical == BoardArea.Top || e.Vertical == BoardArea.Center || e.Vertical == BoardArea.Bottom;
+                
+                if (validGameState && validHorizontalArea && validVerticalArea)
+                    OnPlayerMoved(sender, e);
+                else if(!validGameState)
+                    throw new InvalidOperationException("Start a match to play!");
+                else if(!validHorizontalArea)
+                    throw new ArgumentException($"Horizontal Area can not be ${e.Horizontal}.");
+                else
+                    throw new ArgumentException($"Vertical Area can not be ${e.Vertical}.");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void StartMatch(object sender, EventArgs e)
+        {
+            try
+            {
+                State = EState.Start;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void SubscribeToPlayersMovements()
+        {
+            foreach (var player in _players)
+            {
+                player.MarkBoard += PlayerMove;
+            }
+        }
+        private void UnsubscribeToPlayerMoviment()
+        {
+            foreach (var player in _players)
+            {
+                player.MarkBoard -= PlayerMove;
+            }
+        }
+        private void SortFirstPlayer()
+        {
+            Random coin = new Random();
+            int index = coin.Next(0, Players.Length);
+            PlayerTurn = Players[index];
         }
 
         private void ResetBoard()
         {
-            int rows = _board.GetLength(0);
-            int cols = _board.GetLength(1);
+            int rows = Board.GetLength(0);
+            int cols = Board.GetLength(1);
 
             for (int i = 0; i < rows; i++)
+            {
                 for (int j = 0; j < cols; j++)
                 {
-                    _board[i, j] = NoMove;
-                    Board[i, j] = '\0';
+                    Board[i, j] = NoMove;
                 }
-        }
-        private void RegisterMove(int x, int y)
-        {
-            if (x < 0 && x >= Board.GetLength(0))
-                throw new ArgumentException($"x ({x}) is out of ange", "x");
-            if (y < 0 && y >= Board.GetLength(1))
-                throw new ArgumentException($"y ({y}) is out of ange", "y");
-            
-            
-            if(PlayerTurn == Player1)
-            {
-                _board[x, y] = 1;
-            }
-            else
-            {
-                _board[x, y] = 2;
             }
         }
-
-        private void NextTurn()
+        private void ResetGame()
         {
-            if(!EndGame())
-            {
-                if(PlayerTurn == Player1)
-                {
-                    PlayerTurn = Player2;
-                }
-                else
-                {
-                    PlayerTurn = Player1;
-                }
-                WaitingPlayerMove?.Invoke(this, EventArgs.Empty);
-                //int actualPlayer = (PlayerTurn == Player1) ? 1 : 2;
-                //int nextPlayer = (actualPlayer) % TotalPlayers;
-                //PlayerTurn = Players[nextPlayer];
-            }
-            else 
-            {
-                if (HasWinner)
-                    PlayerTurn.Score++;
-
-                //foreach (var player in Players)
-                //{
-                //    player.Move -= RegisterMove;
-                //    player.EndMove -= NextTurn;
-                //}
-                RemoveMoves();
-                HasEnded = true;
-                End?.Invoke(this, EventArgs.Empty);
-            }
+            PlayerTurn = null;
+            Winner = null;
+            MovesLeft = TotalMoves;
         }
-
-        private bool EndWithWinner()
-        {
-            HasWinner = WinByColumn() || WinByDiagonal() || WinByRow();
-            return HasWinner;
-        }
-
-        public bool EndGame()
-        {
-            return (EndWithWinner() || GameTied());
-        }
-
         private bool GameTied()
         {
-            return (MovesLeft == 0);
+            return (MovesLeft == NoMove);
         }
-
         private bool WinByDiagonal()
         {
-            
+
             if (Board[0, 0] != NoMove && Board[0, 0] == Board[1, 1] && Board[1, 1] == Board[2, 2])
                 return true;
-            else if (Board[0, 2] != NoMove && Board[0, 2] == Board[1, 1] && Board[1, 1] == Board[2, 0])
+            if (Board[0, 2] != NoMove && Board[0, 2] == Board[1, 1] && Board[1, 1] == Board[2, 0])
                 return true;
             return false;
         }
-
         private bool WinByColumn()
         {
             int cols = Board.GetLength(0);
@@ -249,7 +310,6 @@ namespace TicTacToe
             }
             return false;
         }
-
         private bool WinByRow()
         {
             int rows = Board.GetLength(1);
@@ -260,7 +320,14 @@ namespace TicTacToe
             }
             return false;
         }
-
     }
+
+    public class BoardChangedEventArgs : EventArgs
+    {
+        public BoardArea Vertical;
+        public BoardArea Horizontal;
+    }
+
+    public class MarkBoardEventArgs : BoardChangedEventArgs { }
 
 }
