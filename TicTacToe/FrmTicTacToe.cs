@@ -91,148 +91,63 @@ namespace TicTacToe
         #endregion
 
         #region Game Area
-        private void LblAreaNW_Click(object sender, EventArgs e)
+        private void Area_Click(BoardArea vertical, BoardArea horizontal)
         {
             try
             {
-                game.PlayerTurn.MakeMark(BoardArea.Top, BoardArea.Left);
+                game.PlayerTurn.MakeMark(vertical, horizontal);
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                lblResult.Text = ex.Message;
+                lblResult.Text = "Start a match before play!";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void LblAreaNW_Click(object sender, EventArgs e)
+        {
+            Area_Click(BoardArea.Top, BoardArea.Left);
         }
 
         private void LblAreaN_Click(object sender, EventArgs e)
         {
-            try 
-            { 
-                game.PlayerTurn.MakeMark(BoardArea.Top, BoardArea.Center);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+            Area_Click(BoardArea.Top, BoardArea.Center);
+        }    
         private void LblAreaNE_Click(object sender, EventArgs e)
         {
-            try 
-            { 
-                game.PlayerTurn.MakeMark(BoardArea.Top, BoardArea.Right);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Top, BoardArea.Right);
         }
 
         private void LblAreaW_Click(object sender, EventArgs e)
         {
-            try
-            {
-                game.PlayerTurn.MakeMark(BoardArea.Center, BoardArea.Left);
-            }            
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Center, BoardArea.Left);
         }
 
         private void LblAreaO_Click(object sender, EventArgs e)
         {
-            try
-            {        
-                game.PlayerTurn.MakeMark(BoardArea.Center, BoardArea.Center);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Center, BoardArea.Center);
         }
 
         private void LblAreaE_Click(object sender, EventArgs e)
         {
-            try
-            {        
-                game.PlayerTurn.MakeMark(BoardArea.Center, BoardArea.Right);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Center, BoardArea.Right);
         }
 
         private void LblAreaSW_Click(object sender, EventArgs e)
         {
-            try
-            {        
-                game.PlayerTurn.MakeMark(BoardArea.Bottom, BoardArea.Right);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Bottom, BoardArea.Left);
         }
 
         private void LblAreaS_Click(object sender, EventArgs e)
         {
-            try
-            {        
-                game.PlayerTurn.MakeMark(BoardArea.Bottom, BoardArea.Center);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Bottom, BoardArea.Center);
         }
 
         private void LblAreaSE_Click(object sender, EventArgs e)
         {
-            try
-            {        
-                game.PlayerTurn.MakeMark(BoardArea.Bottom, BoardArea.Left);
-            }
-            catch (NullReferenceException ex)
-            {
-                lblResult.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Area_Click(BoardArea.Bottom, BoardArea.Right);
         }
         #endregion
 
