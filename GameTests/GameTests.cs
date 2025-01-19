@@ -8,10 +8,15 @@ using RealPlayer = TicTacToe.Player;
 
 namespace GameTests
 {
-    internal class Game
+    internal class GameTests
     {
         private readonly RealPlayer PlayerOne = new RealPlayer("Foo", 'F');
         private readonly RealPlayer PlayerTwo = new RealPlayer("Bar", 'B');
+
+        [SetUp]
+        public void Setup()
+        {
+        }
 
         [Test]
         public void Constructor_TwoDifferentPlayers_ReturnsInstance()
@@ -20,6 +25,7 @@ namespace GameTests
 
             game = new RealGame(PlayerOne, PlayerTwo);
 
+            Assert.IsNotNull(game);
             Assert.IsInstanceOf<RealGame>(game);
         }
 
