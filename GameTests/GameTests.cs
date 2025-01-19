@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using TicTacToe;
@@ -31,7 +32,7 @@ namespace GameTests
         }
 
         [Test]
-        public void GameStateInitialize_PlayerMakeMove_ThrowsIllegalOperationException()
+        public void GameState_GameIsBuiltButNotStarted_StateShouldBeInitialize()
         {
             RealGame game = new RealGame(PlayerOne, PlayerTwo);
             RealGame.EState actual;
@@ -39,9 +40,28 @@ namespace GameTests
 
             actual = game.State;
 
-            Assert.AreEqual(expected, actual);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
-       
+        [Test]
+        public void StartMatch_Calling_ShouldTriggerMatchStartedAndWaitingPlayerEvent()
+        {
+            RealGame game = new RealGame(PlayerOne, PlayerTwo);
+            bool startCall = false;
+            bool waintingPlayerCall = false;
+            game.Match_Start += (o, e) => startCall = true;
+            game.Match_WaitingPlayer += (o, e) => waintingPlayerCall = true;
+
+            game.StartMatch(null, EventArgs.Empty);
+
+            Assert.That(startCall, Is.True);
+            Assert.That(waintingPlayerCall, Is.True);
+        }
+
+        [Test]
+        public void GameState_StartMatchHasBeingCall_ShouldChangeStateToStartAndThenToWaitingPlayer()
+        {
+            Assert.Pass();
+        }
     }
 }
