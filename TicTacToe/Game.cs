@@ -80,8 +80,8 @@ namespace TicTacToe
                 else if(value == null)
                 {
                     _playerWinner = null;
+                }
             }
-        }
         }
         public char[,] Board { get; private set; } = null;
         public int MovesLeft { get; private set; } = 0;
@@ -104,7 +104,7 @@ namespace TicTacToe
                         OnMatchStart(); break;
                     case EState.WaitingPlayer:
                         OnWaitingPlayer(); break;
-                    case EState.HasWinner:
+                    case EState.MatchHasWinner:
                         OnMatchHasWinner(); break;
                     case EState.End:
                         OnMatchEnd(); break;
@@ -136,8 +136,6 @@ namespace TicTacToe
                 ResetGame();
                 SubscribeToPlayersMovements();
                 Match_Start?.Invoke(this, EventArgs.Empty);
-
-                SortFirstPlayer();
             }
             catch (Exception)
             {
@@ -173,7 +171,7 @@ namespace TicTacToe
 
                 if (HasWinner())
                 {
-                    State = EState.HasWinner;
+                    State = EState.MatchHasWinner;
                 }
                 else if (GameTied())
                 {
@@ -243,6 +241,7 @@ namespace TicTacToe
             try
             {
                 State = EState.Start;
+                SortFirstPlayer();
             }
             catch (Exception)
             {
