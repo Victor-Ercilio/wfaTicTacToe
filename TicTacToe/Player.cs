@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TicTacToe
 {
-    internal class Player : IPlayGame
+    public class Player : IPlayGame
     {
         public Player(string name, char mark)
         {
