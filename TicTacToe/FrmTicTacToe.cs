@@ -40,8 +40,8 @@ namespace TicTacToe
         }
         private void OnMatchStart(object sender, EventArgs e)
         {
-            lblPlayer1.Text = playerX.Name;
-            lblPlayer2.Text = playerO.Name;
+            lblPlayer1.Text = $"{playerX.Name} - {playerX.Mark}";
+            lblPlayer2.Text = $"{playerO.Mark} - {playerO.Name}";
         }
         private void OnBoardChange(object sender, BoardChangedEventArgs e)
         {
