@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MyDocs>
+  <Doc name="Class">
+    <summary>
+      It represents a board for playing Tic-Tac-Toe or
+      any other game, as long as it is 3 columns and 3 rows wide.
+    </summary>
+  </Doc>
+  <Doc name="EmptyConstructor">
+    <summary>
+      Create and returns a new Board of Tic-Tac-Toe.
+    </summary>
+  </Doc>
+  <Doc name="IntIndexer">
+    <summary>
+      
+    </summary>
+  </Doc>
+  <Doc name="AreaIndexer">
+    <summary>
+
+    </summary>
+  </Doc>
+  <Doc name="Enum:VerticalArea">
+    <summary>
+
+    </summary>
+  </Doc>
+  <Doc name="Enum:HorizontalArea">
+    <summary>
+
+    </summary>
+  </Doc>
+  <Doc name="Func:ValidateIntIndexers">
+    <summary>
+      It checks if the values of the indexers are still 
+      within the board's range.
+    </summary>
+    
+  </Doc>
+  <Doc name="Func:Clear">
+    <summary>
+      Reset the board. It set all areas to empty.
+    </summary>
+  </Doc>
+</MyDocs>

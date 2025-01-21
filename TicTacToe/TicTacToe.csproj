@@ -107,5 +107,8 @@
   <ItemGroup>
     <Folder Include="img\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\board.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
