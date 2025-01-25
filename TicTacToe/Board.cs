@@ -7,6 +7,12 @@ namespace TicTacToe
     {
         protected char[,] board;
 
+        /// <include file='docs/board.xml' path='MyDocs/Doc[@name="ConstEmptyArea"]'/>
+        public const char EmptyArea = '\0';
+
+        /// <include file='docs/board.xml' path='MyDocs/Doc[@name="Event:BoardChanged"]'/>
+        public event EventHandler<BoardChangedEventArgs> BoardChanged;
+
         /// <include file='docs/board.xml' path='MyDocs/Doc[@name="EmptyConstructor"]'/>
         public Board() 
         {
@@ -53,6 +59,7 @@ namespace TicTacToe
             set
             {
                 board[(int)v, (int)h] = value;
+                OnBoardChange(value, v, h);
             }
         }
 
@@ -88,9 +95,29 @@ namespace TicTacToe
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    board[i, j] = '\0';
+                    board[i, j] = EmptyArea;
+                    OnBoardChange(EmptyArea,(VerticalArea) i, (HorizontalArea) j);
                 }
             }
+                }
+
+        /// <include file='docs/board.xml' path='MyDocs/Doc[@name="EventHandler:OnBoardChange"]'/>
+        protected void OnBoardChange(char key, VerticalArea v, HorizontalArea h)
+        {
+            BoardChangedEventArgs args = new BoardChangedEventArgs
+            {
+                Key = key,
+                VerticalArea = v,
+                HorizontalArea = h
+            };
+            BoardChanged?.Invoke(this, args);
+            }
         }
+
+    public class BoardChangedEventArgs : EventArgs
+    {
+        public char Key;
+        public Board.HorizontalArea HorizontalArea;
+        public Board.VerticalArea VerticalArea;
     }
 }
