@@ -50,15 +50,6 @@ namespace TicTacToe
             Right = 2
         }
 
-        /// <include file='docs/board.xml' path='MyDocs/Doc[@name="Func:ValidateIntIndexers"]'/>
-        private void ValidateIntIndexers(int i, int j)
-        {
-            if (i <= 0 || i >= board.GetLength(0))
-                throw new ArgumentException($"Indexer i is out of range (0 <= i <= {board.GetLength(0)}).");
-            if (j <= 0 || j >= board.GetLength(1))
-                throw new ArgumentException($"Indexer j is out of range (0 <= j <= {board.GetLength(1)}).");
-        }
-
         /// <include file='docs/board.xml' path='MyDocs/Doc[@name="Func:Clear"]'/>
         public void Clear()
         {
