@@ -20,35 +20,6 @@ namespace TicTacToe
             Clear();
         }
 
-        /// <include file='docs/board.xml' path='MyDocs/Doc[@name="IntIndexer"]'/>
-        public char this[int i, int j]
-        {
-            get
-            {
-                try
-                {
-                    ValidateIntIndexers(i, j);
-                    return board[i,j];
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-            set
-            {
-                try
-                {
-                    ValidateIntIndexers(i,j);
-                    board[i,j] = value;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
-
         /// <include file='docs/board.xml' path='MyDocs/Doc[@name="AreaIndexer"]'/>
         public char this[VerticalArea v, HorizontalArea h]
         {
