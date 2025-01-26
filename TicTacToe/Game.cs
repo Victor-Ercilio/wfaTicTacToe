@@ -280,6 +280,13 @@ namespace TicTacToe
                 for (int j = 0; j < cols; j++)
                 {
                     Board[i, j] = NoMove;
+                    BoardChangedEventArgs e = new BoardChangedEventArgs
+                    {
+                        Vertical = (BoardArea)i,
+                        Horizontal = (BoardArea)j,
+                        Mark = NoMove
+                    };
+                    BoardChanged?.Invoke(this, e);
                 }
             }
         }
@@ -326,6 +333,7 @@ namespace TicTacToe
 
     public class BoardChangedEventArgs : EventArgs
     {
+        public char Mark;
         public BoardArea Vertical;
         public BoardArea Horizontal;
     }

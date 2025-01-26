@@ -45,36 +45,35 @@ namespace TicTacToe
         }
         private void OnBoardChange(object sender, BoardChangedEventArgs e)
         {
-            IPlayGame player = (IPlayGame)sender;
             if(e.Vertical == BoardArea.Top)
                 switch (e.Horizontal)
                 {
                     case BoardArea.Left: 
-                        lblAreaNW.Text = player.Mark.ToString(); break;
+                        lblAreaNW.Text = e.Mark.ToString(); break;
                     case BoardArea.Center: 
-                        lblAreaN.Text = player.Mark.ToString(); break;
+                        lblAreaN.Text = e.Mark.ToString(); break;
                     case BoardArea.Right: 
-                        lblAreaNE.Text = player.Mark.ToString(); break;
+                        lblAreaNE.Text = e.Mark.ToString(); break;
                 }
             else if(e.Vertical == BoardArea.Center)
                 switch (e.Horizontal)
                 {
                     case BoardArea.Left:
-                        lblAreaW.Text = player.Mark.ToString(); break;
+                        lblAreaW.Text = e.Mark.ToString(); break;
                     case BoardArea.Center:
-                        lblAreaO.Text = player.Mark.ToString(); break;
+                        lblAreaO.Text = e.Mark.ToString(); break;
                     case BoardArea.Right:
-                        lblAreaE.Text = player.Mark.ToString(); break;
+                        lblAreaE.Text = e.Mark.ToString(); break;
                 }
             else
                 switch (e.Horizontal)
                 {
                     case BoardArea.Left:
-                        lblAreaSW.Text = player.Mark.ToString(); break;
+                        lblAreaSW.Text = e.Mark.ToString(); break;
                     case BoardArea.Center:
-                        lblAreaS.Text = player.Mark.ToString(); break;
+                        lblAreaS.Text = e.Mark.ToString(); break;
                     case BoardArea.Right:
-                        lblAreaSE.Text = player.Mark.ToString(); break;
+                        lblAreaSE.Text = e.Mark.ToString(); break;
                 }
         }
         private void OnWaitingPlayer(object sender, EventArgs e)

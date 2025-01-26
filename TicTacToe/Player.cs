@@ -29,7 +29,8 @@ namespace TicTacToe
                 MarkBoardEventArgs e = new MarkBoardEventArgs
                 {
                     Vertical = vertical,
-                    Horizontal = horizontal
+                    Horizontal = horizontal,
+                    Mark = this.Mark
                 };
                 OnMarkedBoard(this, e);
             }
@@ -45,7 +46,8 @@ namespace TicTacToe
             try
             {
                 MarkBoard?.Invoke(this, e);
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }
