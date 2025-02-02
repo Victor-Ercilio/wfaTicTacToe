@@ -164,7 +164,7 @@ namespace TicTacToe
 
                 if (Board[i, j] == NoMove)
                 {
-                    Board[i, j] = PlayerTurn.Mark;
+                    Board[i, j] = e.Mark;
                     BoardChanged?.Invoke(sender, e);
                     MovesLeft--;
                 }
