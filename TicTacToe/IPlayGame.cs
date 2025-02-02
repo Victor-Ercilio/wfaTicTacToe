@@ -11,6 +11,7 @@ namespace TicTacToe
         int Score { get; set; }
         string Name { get; set; }
         char Mark {  get; set; }
+
         event EventHandler<MarkBoardEventArgs> MarkBoard;
         void MakeMark(BoardArea vertical, BoardArea horizontal);
     }
