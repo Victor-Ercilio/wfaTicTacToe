@@ -83,7 +83,7 @@ namespace TicTacToe
         private void OnMatchEnd(object sender, EventArgs e)
         {
             if (game.HasWinner())
-                lblResult.Text = $"{game.Winner.Name} win!!";
+                lblResult.Text = $"{game.Winner.Name} won!!";
             else
                 lblResult.Text = "No winners this time";
         }
