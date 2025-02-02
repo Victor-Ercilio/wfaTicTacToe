@@ -220,6 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAreaNW.AutoSize = true;
+            this.lblAreaNW.BackColor = System.Drawing.SystemColors.Control;
             this.lblAreaNW.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAreaNW.Location = new System.Drawing.Point(4, 1);
             this.lblAreaNW.Name = "lblAreaNW";
@@ -227,6 +228,8 @@
             this.lblAreaNW.TabIndex = 0;
             this.lblAreaNW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaNW.Click += new System.EventHandler(this.LblAreaNW_Click);
+            this.lblAreaNW.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaNW.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaN
             // 
@@ -241,6 +244,8 @@
             this.lblAreaN.TabIndex = 0;
             this.lblAreaN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaN.Click += new System.EventHandler(this.LblAreaN_Click);
+            this.lblAreaN.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaN.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaNE
             // 
@@ -255,6 +260,8 @@
             this.lblAreaNE.TabIndex = 0;
             this.lblAreaNE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaNE.Click += new System.EventHandler(this.LblAreaNE_Click);
+            this.lblAreaNE.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaNE.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaW
             // 
@@ -269,6 +276,8 @@
             this.lblAreaW.TabIndex = 0;
             this.lblAreaW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaW.Click += new System.EventHandler(this.LblAreaW_Click);
+            this.lblAreaW.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaW.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaO
             // 
@@ -283,6 +292,8 @@
             this.lblAreaO.TabIndex = 0;
             this.lblAreaO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaO.Click += new System.EventHandler(this.LblAreaO_Click);
+            this.lblAreaO.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaO.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaE
             // 
@@ -297,6 +308,8 @@
             this.lblAreaE.TabIndex = 0;
             this.lblAreaE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaE.Click += new System.EventHandler(this.LblAreaE_Click);
+            this.lblAreaE.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaE.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaSW
             // 
@@ -311,6 +324,8 @@
             this.lblAreaSW.TabIndex = 0;
             this.lblAreaSW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaSW.Click += new System.EventHandler(this.LblAreaSW_Click);
+            this.lblAreaSW.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaSW.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaS
             // 
@@ -325,6 +340,8 @@
             this.lblAreaS.TabIndex = 0;
             this.lblAreaS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaS.Click += new System.EventHandler(this.LblAreaS_Click);
+            this.lblAreaS.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaS.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // lblAreaSE
             // 
@@ -339,6 +356,8 @@
             this.lblAreaSE.TabIndex = 0;
             this.lblAreaSE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblAreaSE.Click += new System.EventHandler(this.LblAreaSE_Click);
+            this.lblAreaSE.MouseLeave += new System.EventHandler(this.LblArea_MouseLeave);
+            this.lblAreaSE.MouseHover += new System.EventHandler(this.LblArea_MouseHover);
             // 
             // FrmTicTacToe
             // 

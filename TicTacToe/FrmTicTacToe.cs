@@ -148,8 +148,20 @@ namespace TicTacToe
         {
             Area_Click(BoardArea.Bottom, BoardArea.Right);
         }
+
         #endregion
 
+        private void LblArea_MouseHover(object sender, EventArgs e)
+        {
+            Label lbl = (Label)sender;
+            lbl.BackColor = SystemColors.ControlLight;
+        }
+
+        private void LblArea_MouseLeave(object sender, EventArgs e)
+        {
+            Label lbl = (Label)sender;
+            lbl.BackColor = SystemColors.Control;
+        }
 
     }
 }
