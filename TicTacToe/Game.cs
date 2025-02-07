@@ -168,6 +168,7 @@ namespace TicTacToe
                     BoardChanged?.Invoke(sender, e);
                     MovesLeft--;
                 }
+                else return;
 
                 if (HasWinner())
                 {
