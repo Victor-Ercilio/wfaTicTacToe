@@ -6,7 +6,7 @@ namespace TicTacToe
     public enum BoardArea
     {
         Top = 0,
-        Center  = 1,
+        Center = 1,
         Bottom = 2,
         Left = Top,
         Right = Bottom
@@ -61,7 +61,7 @@ namespace TicTacToe
             private set
             {
                 _playerTurn = value;
-                if(value != null)
+                if (value != null)
                     State = EState.WaitingPlayer;
             }
         }
@@ -73,11 +73,11 @@ namespace TicTacToe
             }
             private set
             {
-                if(value != null && Players.Contains(value))
+                if (value != null && Players.Contains(value))
                 {
                     _playerWinner = value;
                 }
-                else if(value == null)
+                else if (value == null)
                 {
                     _playerWinner = null;
                 }
@@ -99,7 +99,7 @@ namespace TicTacToe
                 switch (value)
                 {
                     case EState.Initialize:
-                        OnInitialize();  break;
+                        OnInitialize(); break;
                     case EState.Start:
                         OnMatchStart(); break;
                     case EState.WaitingPlayer:
@@ -222,12 +222,12 @@ namespace TicTacToe
                 bool validGameState = State != EState.Initialize || State != EState.End;
                 bool validHorizontalArea = e.Horizontal == BoardArea.Left || e.Horizontal == BoardArea.Center || e.Horizontal == BoardArea.Right;
                 bool validVerticalArea = e.Vertical == BoardArea.Top || e.Vertical == BoardArea.Center || e.Vertical == BoardArea.Bottom;
-                
+
                 if (validGameState && validHorizontalArea && validVerticalArea)
                     OnPlayerMoved(sender, e);
-                else if(!validGameState)
+                else if (!validGameState)
                     throw new InvalidOperationException("Start a match to play!");
-                else if(!validHorizontalArea)
+                else if (!validHorizontalArea)
                     throw new ArgumentException($"Horizontal Area can not be ${e.Horizontal}.");
                 else
                     throw new ArgumentException($"Vertical Area can not be ${e.Vertical}.");
