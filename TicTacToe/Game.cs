@@ -39,7 +39,7 @@ namespace TicTacToe
         private IPlayGame _playerWinner;
 
         public const char NoMove = '\0';
-        public const int MinimunMoves = 3;
+        public const int MinimumMoves = 3;
         public const int TotalMoves = 9;
         public Game(IPlayGame player1, IPlayGame player2)
         {
